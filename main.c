@@ -1,8 +1,46 @@
 # include <stdio.h>
 # include <windows.h>
-#include <string.h>
 
-void seporator(void){
+
+void quad(void){
+    int num0 = 0 ;
+    int num1 = 1;
+    int num2 = 2;
+    int num3 = 3;
+    int num4 = 4;
+    int num5 = 5;
+    int num6 = 6;
+    int num7 = 7;
+    int num8 = 8;
+    int num9 = 9;
+    int num10 = 10;
+
+
+    printf( "Число\tКвадрат\tКуб\n"
+                   " %d\t%d\t%d\n"
+                   " %d\t%d\t%d\n"
+                   " %d\t%d\t%d\n"
+                   " %d\t%d\t%d\n"
+                   " %d\t%d\t%d\n"
+                   " %d\t%d\t%d\n"
+                   " %d\t%d\t%d\n"
+                   " %d\t%d\t%d\n"
+                   " %d\t%d\t%d\n"
+                   " %d\t%d\t%d\n"
+                   " %d\t%d\t%d\n",num0, num0*num0, num0*num0*num0,
+                                   num1, num1*num1,num1*num1*num1,
+                                   num2, num2*num2,num2*num2*num2,
+                                   num3, num3*num3,num3*num3*num3,
+                                   num4, num4*num4,num4*num4*num4,
+                                   num5, num5*num5,num5*num5*num5,
+                                   num6, num6*num6,num6*num6*num6,
+                                   num7, num7*num7,num7*num7*num7,
+                                   num8, num8*num8,num8*num8*num8,
+                                   num9, num9*num9,num9*num9*num9,
+                                   num10, num10*num10,num10*num10*num10);
+}
+
+void separator(void){
     /*  функция разделяет порядки в заданом числе табуляцией */
     int numb;
     char string[20];
@@ -219,7 +257,8 @@ int main()
     int multi_result;
 
     SetConsoleOutputCP(CP_UTF8);
-    seporator();
+    quad();
+    separator();
     even_or_odd();
     print_xyN();
     equal();
