@@ -1,6 +1,64 @@
 # include <stdio.h>
 # include <windows.h>
 
+void chap2_2(void)
+{
+    int x, y, i, power ;
+
+    i = 1;
+    power = 1;
+
+    puts("Введите число для возведения в степень");
+    scanf("%d",&x);
+    puts("Введите степень в которуюхотите возвести число");
+    scanf("%d", &y);
+
+    while (i <= y){
+        power *= x;
+        printf("%d\n", power);
+        i++;
+    }
+    printf ("%d в степени %d равно %d\n", x, y, power);
+}
+
+
+void chap2_1(void)
+{
+    int x = 1;
+    int sum = 0;
+    int d;
+
+    while (x != 11){
+        printf("%d\n", x);
+        sum += x++;
+    }
+
+    printf("Сумма %d\n", sum);
+    scanf("%d", &d);
+}
+
+void chap2(void)
+{
+    int x = 1;
+    int y = 2;
+    int z;
+    int d;
+    float total  = 101.1234F;
+
+    total += (float)x--;
+    // total = total + x--;
+    printf("%.2f\n", total);
+    printf("%d\n", x);
+    z = y + x++;
+    z *= 2;
+
+    (z < 10) ? puts("z меньше 10") :  puts("z больше 10");
+
+    printf("%d\n", z);
+    printf("%d\n", x);
+    scanf("%d", &d);
+}
+
 
 void quad(void){
     int num0 = 0 ;
@@ -257,6 +315,8 @@ int main()
     int multi_result;
 
     SetConsoleOutputCP(CP_UTF8);
+    chap2_2();
+    chap2();
     quad();
     separator();
     even_or_odd();
