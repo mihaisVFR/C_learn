@@ -1,9 +1,58 @@
 # include <stdio.h>
 # include <windows.h>
 
+int gas_control1()
+{
+    int miles, counter;
+    float gas, total;
+
+    gas = total = 0;
+    miles = counter = 0;
+
+    while (gas != -1){
+        printf("Введите расход бензина (-1 если ввод закончен) :");
+        scanf("%f", &gas);
+        if (gas > 0){
+            printf("Введите пройденное растояние :");
+            scanf("%d", &miles);
+            printf("Для этой поездки миль с галона пройдено %.6f\n", (float)miles / gas);
+            ++counter;
+            total += (float)miles / gas;
+        }
+
+    }
+    printf("Средний пробег с одного галона %f\n", total / (float)counter);
+    return 0;
+}
+
+int gas_control()
+{
+    int miles, counter = 0;
+    float gas, total;
+    char input[50];
+
+    gas = total = 0;
+
+    while (input[0] != 'q' ){
+        printf("Введите расход бензина (q если ввод закончен) :");
+        scanf("%s", &input);
+        if (input[0] == 'q')
+            break;
+        gas = atof(input);
+        printf("Введите пройденное растояние :");
+        scanf("%d", &miles);
+        printf("Для этой поездки миль с галона пройдено %f\n", (float)miles / gas);
+        ++counter;
+        total += (float)miles / gas;
+    }
+    printf("Средний пробег с одного галона %f", total / (float)counter);
+    return 0;
+}
+
 void chap2_2(void)
 {
     int x, y, i, power ;
+
 
     i = 1;
     power = 1;
@@ -19,6 +68,7 @@ void chap2_2(void)
         i++;
     }
     printf ("%d в степени %d равно %d\n", x, y, power);
+
 }
 
 
@@ -315,6 +365,7 @@ int main()
     int multi_result;
 
     SetConsoleOutputCP(CP_UTF8);
+    gas_control1();
     chap2_2();
     chap2();
     quad();
