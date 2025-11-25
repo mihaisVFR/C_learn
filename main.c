@@ -1,6 +1,62 @@
 # include <stdio.h>
 # include <windows.h>
 
+int salary()
+{
+    char sales[100];
+    float float_sales;
+
+    while (1)
+    {
+        printf("ввведите сумму продаж в долларах (q если ввод закончен) : ");
+        scanf("%s", &sales);
+        if (sales[0] == 'q'){
+            break;
+        }
+        sscanf(sales, "%f", &float_sales);
+            if (float_sales <= 0.0f){
+                puts("Значение должно быть >= 0\n");
+            }
+            else{
+                printf("Зарплата $%.2f\n", 200.00 + float_sales * 0.09);
+            }
+    }
+}
+
+int credit_control()
+{
+    int account;
+    float start_balance, cash, credit, limit, new_balance;
+
+    account = 0;
+
+    while (1){
+        printf("\nВведите номер счета (-1 если ввод окончен) : ");
+        if (account == -1){
+            break;}
+        scanf("%d", &account);
+        printf("Введите начальный баланс : ");
+        scanf("%f", &start_balance);
+        printf("Введите общую сумму расходов : ");
+        scanf("%f", &cash);
+        printf("Из них кредитных : ");
+        scanf("%f", &credit);
+        printf("Введите предельный размер кредита : ");
+        scanf("%f", &limit);
+
+        new_balance = start_balance + cash - credit;
+        if (limit < new_balance)
+        {
+            printf("Счет: %d\nПредельный размер кредита: %f\nБаланс: %f\n"
+                   "ПРЕВЫШЕН ЛИМИТ КРЕДИТА!!!\n\n", account, limit, new_balance);
+        }
+
+
+    }
+
+    return 0;
+}
+
 int gas_control1()
 {
     int miles, counter;
@@ -365,6 +421,8 @@ int main()
     int multi_result;
 
     SetConsoleOutputCP(CP_UTF8);
+    salary();
+    credit_control();
     gas_control1();
     chap2_2();
     chap2();
