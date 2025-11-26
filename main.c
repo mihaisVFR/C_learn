@@ -1,5 +1,53 @@
 # include <stdio.h>
 # include <windows.h>
+#include <time.h>
+
+void speed_test()
+{
+    int i = 0;
+    clock_t start, end;
+    double cpu_time_used;
+    double total_time_used;
+
+    start = clock();
+    while (i != 30000000){
+        start = clock();
+        if (i % 1000000 ==0) {
+            end = clock();
+            cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+            printf("Время счета до %d = %.40f\n", i, cpu_time_used);
+        }
+        i++;
+    }
+
+    end = clock();
+    total_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+    printf("***** Общее счета до %d = %.40f\n", i, total_time_used);
+}
+
+
+int oct_to_dec()
+{
+    int numb, counter, dec;
+
+    numb = counter =  1;
+    dec = 0;
+
+    while (1) {
+        printf("Введите двоичное число (для выхода -1) ");
+        scanf("%d", &numb);
+        if (numb == -1)
+            break;
+        while (numb) {
+            dec += (numb % 10) * counter;
+            numb /= 10;
+            counter *= 2;
+        }
+        printf("Десятичный эквивалени = %d\n", dec);
+    }
+
+    return dec;
+}
 
 int palindrom()
 {
@@ -615,6 +663,8 @@ int main()
     int multi_result;
 
     SetConsoleOutputCP(CP_UTF8);
+    speed_test();
+    oct_to_dec();
     palindrom();
     square();
     else_flying();
