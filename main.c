@@ -1,6 +1,165 @@
 # include <stdio.h>
 # include <windows.h>
 
+int square()
+{
+    int a, b, input;
+
+    printf("введите число от 1 до 21 ");
+    scanf("%d", &input);
+    a=1;
+    while(a <= input){
+        b=1;
+        while (b <= input){
+            printf("%s", (a == 1 || a == input) ? "* " :
+                         (b == 1 || b == input) ? "* " : "  ");
+            b++;}
+        printf("\n");
+        a++;}
+    return 0;
+}
+
+
+int else_flying()
+{
+    int x = 11;
+    int y = 9;
+
+    if ( x < 10 )
+        if ( y > 10 )
+            printf( "*****\n" );
+        else
+            printf( "#####\n" );
+    printf( "$$$$$\n" );
+
+    printf("\n\n");
+
+    if ( x < 10 ) {
+        if (y > 10)
+            printf("*****\n");
+        }else {
+            printf("#####\n");
+            printf("$$$$$\n");
+        }
+    return 0;
+}
+
+
+
+int table( void )
+
+{
+    int row = 10; /* инициализировать row */
+    int column; /* определить column */
+        while ( row >= 1 ) { /* цикл, пока row не станет < 1 */
+            column = 1; /* в начале прохода установить column = 1 */
+            while (column <= 10) { /* 10 проходов цикла */
+                printf("%s", row % 2 ? "<" : ">"); /* вывод */
+                column++; /* приращение счетчика*/
+            }
+            row--; /* уменьшить row */
+            printf("\n");
+        }
+    return 0; /* показывает успешное завершение */
+}
+
+void while_test()
+{
+    int counter;
+    counter = 1;
+
+    printf("N\t10*N\t100*N\t1000*N\n");
+    while ( counter <=10){
+        printf("%d\t%d\t%d\t%d\n", counter, counter*10, counter*100, counter*1000);
+        counter++;
+    }
+}
+
+void max_number()
+{
+    int number, counter, largest, prelargest;
+    largest = prelargest = -2147483648;
+    counter = 1;
+
+    while (counter <=10){
+        printf("Введите целлое число : ");
+        scanf("%d", &number);
+        prelargest = largest ;
+        if (number > largest)
+            largest = number;
+
+        counter++;
+    }
+    printf("наибольшее число из введённых это %d, второе самое большое чило %d\n", largest, prelargest);
+}
+
+void increm()
+{
+    int a = 1;
+    printf("Применяю постдекрименант a = %d\n", a--);
+    printf("a стало равно  %d\n", a);
+    printf("Применяю предекрименант a = %d\n", a--);
+    printf("a стало равно  %d\n", a);
+
+    a = 1;
+    while (a <= 10){
+        printf("%d   ", a++);
+
+    }
+    puts("\n");
+}
+
+
+void week_salary()
+{
+    int hours;
+    float hour_salary;
+
+    while (1)
+    {
+        printf("Введите # отработанных часов (-1 для выхода): ");
+        scanf("%d", &hours);
+        if (hours == -1)
+            break;
+        printf("введите почасовой тариф $00.00 : ");
+        scanf("%f", &hour_salary);
+        if (hours <= 0 || hour_salary <= 0)
+            puts("Ошибка, все значения должны быть >= 0");
+        else
+            if (hours <= 40)
+                printf("Зарплата составит $%.2f\n", (float) hours * hour_salary);
+            else
+                printf("Зарплата составит $%.2f\n", (float)hours * hour_salary * 1.5);
+
+    }
+}
+
+
+void credit_rate()
+{
+    float interest, principal, rate;
+    unsigned int days;
+
+    while (1){
+        printf("Введите основную сумму ссуды (-1, если ввод закончен) : ");
+        scanf("%f", &principal);
+        if (principal == -1)
+            break;
+        printf("Введите процентную ставку : ");
+        scanf("%f", &rate);
+        rate /= 100;
+        printf("Введите срок в днях : ");
+        scanf("%d", &days);
+        if (principal <= 0  || rate <= 0 || days <= 0){
+            puts("Ошибка, все значения должны быть >= 0");
+        }else{
+            interest = principal * rate * (float)days / 365;
+            printf("Проценты от ссуды составят $%.2f\n", interest);
+        }
+
+    }
+}
+
 int salary()
 {
     char sales[100];
@@ -21,6 +180,7 @@ int salary()
                 printf("Зарплата $%.2f\n", 200.00 + float_sales * 0.09);
             }
     }
+    return 0;
 }
 
 int credit_control()
@@ -421,6 +581,14 @@ int main()
     int multi_result;
 
     SetConsoleOutputCP(CP_UTF8);
+    square();
+    else_flying();
+    table();
+    max_number();
+    while_test();
+    increm();
+    week_salary();
+    credit_rate();
     salary();
     credit_control();
     gas_control1();
