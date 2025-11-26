@@ -1,6 +1,41 @@
 # include <stdio.h>
 # include <windows.h>
 
+int palindrom()
+{
+    int numb, p1,p2,p3,p4,p5;
+
+    numb = 0;
+
+    while (numb != -1 ) {
+        printf("Введите 5-ти значное целое число > 0 (для выхода -1)");
+        scanf("%d", &numb);
+
+        if (numb != -1) {
+            if (9 > numb % 10000 || numb < 1) {
+                puts("Ошибка! Введите 5-ти значное число > 0");
+            }
+            else {
+                p1 = numb / 10000;
+                p2 = (numb - p1 * 10000) / 1000;
+                p3 = (numb - p1 * 10000 - p2 * 1000) / 100;
+                p4 = (numb - p1 * 10000 - p2 * 1000 - p3 * 100) / 10;
+                p5 = numb % 10;
+
+                if (p1 == p5 && p2 == p4)
+                    printf("%d - Полиндром\n", numb);
+                else
+                    printf("%d - Не полиндром\n", numb);
+            }
+        }
+        else
+            printf("Всего доброго\n");
+    }
+    return 0;
+}
+
+
+
 int square()
 {
     int a, b, input;
@@ -11,8 +46,7 @@ int square()
     while(a <= input){
         b=1;
         while (b <= input){
-            printf("%s", (a == 1 || a == input) ? "* " :
-                         (b == 1 || b == input) ? "* " : "  ");
+            printf("%s", (a == 1 || a == input) ? "* " : (b == 1 || b == input) ? "* " : "  ");
             b++;}
         printf("\n");
         a++;}
@@ -581,6 +615,7 @@ int main()
     int multi_result;
 
     SetConsoleOutputCP(CP_UTF8);
+    palindrom();
     square();
     else_flying();
     table();
