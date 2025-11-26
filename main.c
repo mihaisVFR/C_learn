@@ -2,6 +2,26 @@
 # include <windows.h>
 #include <time.h>
 
+
+void stars100()
+{
+    int i = 100;
+
+    while(i){
+        if (i % 10 == 0 && i != 100)
+            printf("\n");
+        printf("*");
+        i--;
+    }
+    printf("\n");
+    while ( i<= 100) {
+        if (i % 10 )
+            printf("\n");
+        printf("*");
+        i++;
+    }
+}
+
 void speed_test()
 {
     int i = 0;
@@ -663,6 +683,7 @@ int main()
     int multi_result;
 
     SetConsoleOutputCP(CP_UTF8);
+    stars100();
     speed_test();
     oct_to_dec();
     palindrom();
