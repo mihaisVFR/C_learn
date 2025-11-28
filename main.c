@@ -2,6 +2,52 @@
 # include <windows.h>
 #include <time.h>
 
+void encript_code(int flag){
+    int numb, cript_digit, counter, cript_numb, range;
+
+    while (1){
+        counter = 1, cript_numb = 0, range = 1;
+        printf("Введите 4-х значное число 0 для выхода");
+        scanf("%d", &numb);
+        if (numb == 0)
+            break;
+        else
+            if (numb < 1000 || numb > 10000)
+                 printf ("Число слишком велико или слишком мало\n");
+            else{
+             while (counter != 5) {
+                 if (flag)
+                     cript_digit = (numb % 10 + 7) % 10;
+                 else
+                     cript_digit = (numb % 10 - 7 + 10 ) % 10;
+
+                 if (counter <= 2)
+                     cript_numb += cript_digit * range * 100;
+                 else
+                     cript_numb += cript_digit * range / 100;
+
+                 range *= 10;
+                 numb /=10;
+                 counter++;
+             }
+             printf("Зашифрованое число %d\n", cript_numb);
+             }
+    }
+}
+
+
+void triangle1() {
+    float a, b, c;
+
+    while (printf("Введите стороны A B C: ") &&
+           scanf("%f %f %f", &a, &b, &c) == 3 &&
+           a >= 0 && b >= 0 && c >= 0) {
+
+        puts((a == b && a == c  && b == c) ?
+             "Прямоугольный треугольник существует" : "Прямоугольный треугольник не существует");
+    }
+}
+
 void triangle(){
     float a, b, c;
     int counter = 0;
@@ -9,15 +55,15 @@ void triangle(){
     while (1) {
         printf("Введите сторону А ");
         scanf("%f", &a);
-        if (a < 0)
+        if (a == 0)
             break;
         printf("Введите сторону B ");
         scanf("%f", &b);
-        if (b < 0)
+        if (b == 0)
             break;
         printf("Введите сторону C ");
         scanf("%f", &c);
-        if (c < 0)
+        if (c == 0)
             break;
         if (c < a+b && a < b+c && b < c+a)
             puts("такой треугольник существует");
@@ -770,7 +816,8 @@ int main()
     int multi_result;
 
     SetConsoleOutputCP(CP_UTF8);
-    triangle();
+    encript_code(0);
+    triangle1();
     insert_circle();
 //    unless_while();
 //    chess();
