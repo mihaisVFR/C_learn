@@ -2,6 +2,77 @@
 # include <windows.h>
 #include <time.h>
 
+#include <stdio.h>
+
+void encrypt() {
+    int number;
+
+    printf("Введите четырехзначное число для шифрования: ");
+    scanf("%d", &number);
+
+    int d1 = number / 1000;
+    int d2 = (number / 100) % 10;
+    int d3 = (number / 10) % 10;
+    int d4 = number % 10;
+
+    // Шифрование
+    d1 = (d1 + 7) % 10;
+    d2 = (d2 + 7) % 10;
+    d3 = (d3 + 7) % 10;
+    d4 = (d4 + 7) % 10;
+
+    // Обмен
+    int temp = d1; d1 = d3; d3 = temp;
+    temp = d2; d2 = d4; d4 = temp;
+
+    int encrypted = d1 * 1000 + d2 * 100 + d3 * 10 + d4;
+    printf("Зашифрованное число: %04d\n", encrypted);
+}
+
+void decrypt() {
+    int encrypted;
+
+    printf("Введите зашифрованное четырехзначное число: ");
+    scanf("%d", &encrypted);
+
+    int d1 = encrypted / 1000;
+    int d2 = (encrypted / 100) % 10;
+    int d3 = (encrypted / 10) % 10;
+    int d4 = encrypted % 10;
+
+    // Обратный обмен
+    int temp = d1; d1 = d3; d3 = temp;
+    temp = d2; d2 = d4; d4 = temp;
+
+    // Дешифрование
+    d1 = (d1 - 7 + 10) % 10;
+    d2 = (d2 - 7 + 10) % 10;
+    d3 = (d3 - 7 + 10) % 10;
+    d4 = (d4 - 7 + 10) % 10;
+
+    int original = d1 * 1000 + d2 * 100 + d3 * 10 + d4;
+    printf("Исходное число: %04d\n", original);
+}
+
+int main() {
+    int choice;
+
+    printf("1 - Шифрование\n");
+    printf("2 - Дешифрование\n");
+    printf("Выберите режим: ");
+    scanf("%d", &choice);
+
+    if (choice == 1) {
+        encrypt();
+    } else if (choice == 2) {
+        decrypt();
+    } else {
+        printf("Неверный выбор\n");
+    }
+
+    return 0;
+}
+
 void encript_code(int flag){
     int numb, cript_digit, counter, cript_numb, range;
 
@@ -12,7 +83,7 @@ void encript_code(int flag){
         if (numb == 0)
             break;
         else
-            if (numb < 1000 || numb > 10000)
+            if (numb < 1000 || numb > 9999)
                  printf ("Число слишком велико или слишком мало\n");
             else{
              while (counter != 5) {
@@ -816,7 +887,7 @@ int main()
     int multi_result;
 
     SetConsoleOutputCP(CP_UTF8);
-    encript_code(0);
+    encript_code(1);
     triangle1();
     insert_circle();
 //    unless_while();
