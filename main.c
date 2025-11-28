@@ -2,6 +2,93 @@
 # include <windows.h>
 #include <time.h>
 
+void triangle(){
+    float a, b, c;
+    int counter = 0;
+
+    while (1) {
+        printf("Введите сторону А ");
+        scanf("%f", &a);
+        if (a < 0)
+            break;
+        printf("Введите сторону B ");
+        scanf("%f", &b);
+        if (b < 0)
+            break;
+        printf("Введите сторону C ");
+        scanf("%f", &c);
+        if (c < 0)
+            break;
+        if (c < a+b && a < b+c && b < c+a)
+            puts("такой треугольник существует");
+        else
+            puts("такого треугольника не может быть");
+
+    }
+}
+
+void circle_data( float radius){
+    float PI = 3.14159f;
+
+    printf("Диаметр круга равен %.2f\n", radius * 2);
+    printf("Площадь круга равнв %.2f\n", PI * radius *radius);
+    printf("Периметр круга равен %.2f\n", 2 * PI * radius);
+}
+
+void insert_circle(){
+    float radius;
+
+    while(1) {
+        printf("Введите радиус круга, для выхода -1 ");
+        scanf("%f", &radius);
+        if (radius == -1)
+            break;
+        circle_data(radius);
+    }
+}
+void unless_while(){
+    int i = 1;
+
+    while (1) {
+        i *= 2;
+        printf("%d ,", i);
+    }
+}
+
+
+void chess() {
+    int i = 0, counter = 1;
+
+    while (i != 64){
+        printf("* ");
+        i++;
+        if (i % 8 == 0 ){
+            printf("\n");
+            counter++;
+            if (counter % 2 == 0)
+                printf(" ");}
+
+    }
+}
+
+void fo1(){
+
+    int total, num;
+
+    while (1){
+        total = num = 0;
+        printf("введите число -1 для выхода ");
+        scanf("%d", &num);
+        if (num == -1)
+            break;
+        while (num){
+            if(num % 10 == 7)
+                total++;
+            num /= 10;
+        }
+        printf("в числе %d цифр 7\n", total);
+    }
+}
 
 void stars100()
 {
@@ -683,39 +770,44 @@ int main()
     int multi_result;
 
     SetConsoleOutputCP(CP_UTF8);
-    stars100();
-    speed_test();
-    oct_to_dec();
-    palindrom();
-    square();
-    else_flying();
-    table();
-    max_number();
-    while_test();
-    increm();
-    week_salary();
-    credit_rate();
-    salary();
-    credit_control();
-    gas_control1();
-    chap2_2();
-    chap2();
-    quad();
-    separator();
-    even_or_odd();
-    print_xyN();
-    equal();
-    circle();
-    test();
-    multi_result = multi();
-    printf("%d\n", multi_result);
-    if_func();
-    printf("Введите первое число \n");
-    scanf("%d", &integer1); /*записать введенное пользователем в переменную integer1*/
-    printf("Введите второе число \n");
-    scanf("%d", &integer2); /*записать введенное пользователем в переменную integer2*/
-    sum = integer1 + integer2;
-    printf("Сумма %d\n", sum);
+    triangle();
+    insert_circle();
+//    unless_while();
+//    chess();
+//    fo1();
+//    stars100();
+//    speed_test();
+//    oct_to_dec();
+//    palindrom();
+//    square();
+//    else_flying();
+//    table();
+//    max_number();
+//    while_test();
+//    increm();
+//    week_salary();
+//    credit_rate();
+//    salary();
+//    credit_control();
+//    gas_control1();
+//    chap2_2();
+//    chap2();
+//    quad();
+//    separator();
+//    even_or_odd();
+//    print_xyN();
+//    equal();
+//    circle();
+//    test();
+//    multi_result = multi();
+//    printf("%d\n", multi_result);
+//    if_func();
+//    printf("Введите первое число \n");
+//    scanf("%d", &integer1); /*записать введенное пользователем в переменную integer1*/
+//    printf("Введите второе число \n");
+//    scanf("%d", &integer2); /*записать введенное пользователем в переменную integer2*/
+//    sum = integer1 + integer2;
+//    printf("Сумма %d\n", sum);
 
     return 0;
 }
