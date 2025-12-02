@@ -4,6 +4,52 @@
 
 #include <stdio.h>
 
+void e_in_range(){
+    double total_e = 0;
+    float counter_factorial = 1, x_in_range = 1;
+    int  n = 1;
+
+    while (n < 10){
+        //printf ("%f \n", x_in_range);
+        counter_factorial *= (float)n--;
+        printf("%f, %f\n", counter_factorial, x);
+        n+=2;
+        total_e += x_in_range / counter_factorial;
+        x*=n;
+    }
+    printf("Число е в степени %.2f %.10f\n", x, total_e);
+}
+
+
+void e_const(){
+    double total_e = 0, counter_factorial = 1;
+    int  n = 1;
+
+    while (n < 20){
+        counter_factorial *= n--;
+        printf("%f\n", counter_factorial);
+        n+=2;
+        total_e += 1 / counter_factorial;
+    }
+    printf("%.20f\n", total_e+1);
+}
+
+void math1(){
+    int n, total = 1;
+
+    printf("Введите неотрицательное целое число : ");
+    scanf("%d", &n);
+    if (n < 0){
+        printf("Число %d отрицательное и будет взято по модулю\n", n);
+        n %= 1;
+    }
+    while (n >= 1){
+        total *= n--;
+    }
+    printf("Факториал %d\n", total);
+
+}
+
 void encrypt() {
     int number;
 
@@ -54,7 +100,7 @@ void decrypt() {
     printf("Исходное число: %04d\n", original);
 }
 
-int main() {
+int ma() {
     int choice;
 
     printf("1 - Шифрование\n");
@@ -887,9 +933,12 @@ int main()
     int multi_result;
 
     SetConsoleOutputCP(CP_UTF8);
-    encript_code(1);
-    triangle1();
-    insert_circle();
+    e_in_range(2.0);
+      e_const();
+      math1();
+      encript_code(1);
+//    triangle1();
+//    insert_circle();
 //    unless_while();
 //    chess();
 //    fo1();
