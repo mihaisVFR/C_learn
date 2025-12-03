@@ -4,25 +4,23 @@
 
 #include <stdio.h>
 
-void e_in_range(){
-    double total_e = 0;
+void e_in_range(float x){
+    double total_e = 1;
     float counter_factorial = 1, x_in_range = 1;
     int  n = 1;
 
     while (n < 10){
-        //printf ("%f \n", x_in_range);
         counter_factorial *= (float)n--;
-        printf("%f, %f\n", counter_factorial, x);
         n+=2;
         total_e += x_in_range / counter_factorial;
-        x*=n;
+        x_in_range *= x;
     }
-    printf("Число е в степени %.2f %.10f\n", x, total_e);
+    printf("Число е в степени %.0f = %.10f\n",x, total_e);
 }
 
 
 void e_const(){
-    double total_e = 0, counter_factorial = 1;
+    double total_e = 1, counter_factorial = 1;
     int  n = 1;
 
     while (n < 20){
@@ -31,7 +29,7 @@ void e_const(){
         n+=2;
         total_e += 1 / counter_factorial;
     }
-    printf("%.20f\n", total_e+1);
+    printf("%.20f\n", total_e);
 }
 
 void math1(){
