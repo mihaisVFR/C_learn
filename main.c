@@ -1,8 +1,20 @@
 # include <stdio.h>
 # include <windows.h>
-#include <time.h>
+# include <time.h>
+# include <math.h>
 
-#include <stdio.h>
+
+void depositProfit(){
+    unsigned int n;
+    float a;
+    a = (float)1000;
+    printf("%3s\t%5s\n", "Год", "Сумма");
+
+    for(n = 1 ; n <= 10; n++) {
+        a += a * (float) 0.05;
+        printf("%d\t%2f\n",n, a);
+    }
+}
 
 void e_in_range(float x){
     double total_e = 1;
@@ -920,6 +932,105 @@ int if_func()
     return 0;
 }
 
+int compound()
+{
+    unsigned int n = 1;
+    double r = 0.05, p;
+    for(p=1000; n<=10; n++) {
+        p += p * r;
+        printf("На конец года на счете %.2f\n", p);}
+    printf("Общая сумма после 10 лет %.2f", p);
+    scanf("Press enter");
+    return 0;
+}
+
+int compound12()
+{
+    double amount; /*сумма на счете*/
+    double principal = 1000.0; /*начальный капитал*/
+    double rate = .05; /*годовая процентная ставка*/
+    unsigned int year; /* счетчик лет */
+
+    printf("%8s%41s\n", "Год", "Остаток на счете");
+    for(year = 1 ; year<=10 ; year++) {
+        amount = principal * pow(1 + rate, year);
+        printf("%4d%21.2f.\n", year, amount);}
+    scanf("Press enter");
+    return 0;
+}
+
+
+
+void oneToHundred(){
+    unsigned int count, sum = 0;
+    double shlumpa = 333.546372;
+    char * tab;
+
+    for (count = 1; count<=99; count+=2){
+        printf("%d + %d", sum, count);
+        sum+=count;
+        printf(" = %d\n", sum);
+    }
+    printf("Сумма нечетных чисел от 1 до 99 равнв %d\n", sum);
+    for (count = 1; count<=5; count++)
+        printf("%15.*f\n",count, shlumpa);
+    printf("%-10.2f\n",pow(2.5,3));
+    count = 1;
+    while(count <=20){
+        if (count % 5 == 0) {
+            tab = "\n";
+        }else{
+            tab = "\t";
+        }
+        printf("%d%s",count++, tab);}
+    }
+
+void input_test1() {
+    int intVal, charval = 0;
+    scanf("%d", &intVal);
+    while (charval != EOF) {
+        charval = getchar();
+        switch (charval) {
+            case '\n': /* игнорировать перевод строки */
+            case '\t': /* табуляции */
+            case ' ': /* и пробелы */
+                break;
+            default:
+                printf("Integer: %d\nCharacter: %c\nr", intVal, charval);
+                scanf("Enter");
+        }
+    }
+}
+
+void do_check(void){
+    unsigned int digit = 0;
+    do{
+        printf("%d ", digit+=2);
+        if (digit % 5 == 0)
+            puts("");
+    } while(digit < 100);
+    scanf("Enter");
+}
+
+void ex_for_six(void){
+    int x=0;
+    for ( x = 19; x <= 51; x += 8 )
+        printf( "%d ", x ) ;
+    scanf("enter");
+}
+
+void add_for_ten(void){
+    int limit, user_digit, sum = 0 , counter;
+    puts("введите число слогаемых");
+    scanf("%d", &limit);
+    for (counter = 1; limit >= counter; counter++){
+        printf("Введите слогаемое %d ", counter);
+        scanf("%d", &user_digit);
+        sum += user_digit;
+    }
+    printf("Сумма чисел равна %d\n", sum );
+    scanf("%d" , &counter);
+}
 
 /*main - основная функция программы*/
 int main()
@@ -930,11 +1041,17 @@ int main()
     int sum;
     int multi_result;
 
-    SetConsoleOutputCP(CP_UTF8);
-    e_in_range(2.0);
-      e_const();
-      math1();
-      encript_code(1);
+    SetConsoleOutputCP(CP_UTF8);//   compound12();
+//    ex_for_six();
+    add_for_ten();
+    do_check();
+//    input_test1();
+//    oneToHundred();
+//    depositProfit();
+//    e_in_range(2.0);
+//      e_const();
+//      math1();
+//      encript_code(1);
 //    triangle1();
 //    insert_circle();
 //    unless_while();
