@@ -2,6 +2,7 @@
 # include <windows.h>
 # include <time.h>
 # include <math.h>
+# include <stdlib.h>
 
 
 void depositProfit(){
@@ -948,14 +949,16 @@ int compound12()
 {
     double amount; /*сумма на счете*/
     double principal = 1000.0; /*начальный капитал*/
-    double rate = .05; /*годовая процентная ставка*/
+    int rate; /*годовая процентная ставка*/
     unsigned int year; /* счетчик лет */
-
-    printf("%8s%41s\n", "Год", "Остаток на счете");
-    for(year = 1 ; year<=10 ; year++) {
-        amount = principal * pow(1 + rate, year);
-        printf("%4d%21.2f.\n", year, amount);}
-    scanf("Press enter");
+    for (rate = 5; rate <= 10; rate++) {
+        printf("\nРасчет для %d%% ставки\n", rate);
+        printf("%8s%41s\n", "Год", "Остаток на счете");
+        for (year = 1; year <= 10; year++) {
+            amount = principal * pow(1 + (double)rate / 100, year);
+            printf("%4d%21.2f.\n", year, amount);
+        }
+    }
     return 0;
 }
 
@@ -1016,7 +1019,7 @@ void ex_for_six(void){
     int x=0;
     for ( x = 19; x <= 51; x += 8 )
         printf( "%d ", x ) ;
-    scanf("enter");
+    scanf("%d", x);
 }
 
 void add_for_ten(void){
@@ -1032,6 +1035,106 @@ void add_for_ten(void){
     scanf("%d" , &counter);
 }
 
+int ten_for(void){
+    int user_digit=0, counter = 0;
+    double sum = 0;
+    do {
+        scanf("%d", &user_digit);
+        if (user_digit == 9999)
+            break;
+        sum += user_digit;
+        counter++;
+    }while(user_digit != 9999);
+    sum = sum / counter;
+    printf("Среднее аривметическое %.2f\n", sum);
+    return 0;
+}
+
+void add_for_eleven(void){
+    int limit, user_digit, min, counter = 1;
+
+    puts("введите число слогаемых");
+    scanf("%d", &limit);
+    printf("Введите слогаемое %d ", counter);
+    scanf("%d", &min);
+    for (counter = 2; limit >= counter; counter++){
+        printf("Введите слогаемое %d ", counter);
+        scanf("%d", &user_digit);
+        if (min >= user_digit)
+            min = user_digit;
+    }
+    printf("Минимальное число %d\n", min );
+    scanf("%d" , &counter);
+}
+
+void for_twelf(void){
+    int n , sum = 1;
+    for(n = 1; n<=15; n++){
+        if (n % 2 != 0){
+            printf("%d" , sum);
+            sum *= n;
+            printf(" * %d = %d\n",n, sum);
+        }
+    }
+    printf("Произведение нечетных чисел от 1 до 15 = %d\n", sum);
+}
+
+void for_forteen(void){
+    int total, n = 1, counter;
+    printf("_________________________________________\n|"); /* 30*/
+    for (counter = 1; counter<=5; counter++){
+        printf("   %d!\t|",counter);
+    }
+    printf("\n_________________________________________\n|");
+    for (counter = 1; counter<=5; counter++){
+        n *= counter;
+        printf("   %d\t|",n);
+
+    }printf("\n_________________________________________\n|");
+}
+
+void for_stars(void){
+    int n, i, j;
+    for(n=1; n<=10; n++){
+        for(j = n; j>=0; j--)
+            printf(" ");
+        for(i=10; i>=n; i--)
+            printf("*");
+        printf("\n");
+    }
+}
+
+int client_division(void){
+    int account1 = 40702810 , account2 = 40802810, account3 = 40902810;
+    int max_credit1 = 5000, max_credit2 = 4000, max_credit3 = 3000;
+    double money1 = 1234.21, money2 = 6294.51, money3 = 2233.44;
+    double money[3] = {money1, money2, money3};
+    int clients[3] = {account1,account2, account3};
+    int max_credit[3] = {max_credit1, max_credit2, max_credit3};
+    int counter, i, n;
+    char * answer;
+    n = 0;
+    int *arr = (int*)malloc(3 * sizeof(int));
+
+    for(counter = 0 ; (counter <= sizeof(clients) / sizeof(clients[0]) -1); counter++){
+        if ((double )max_credit[counter] / 2<= money[counter]){
+            answer = "Да";
+            arr[n] = clients[counter];
+            n++;
+        }else answer = "Нет";
+        printf("%d. Клиент - %d, Макс_кредит_до - %d, Макс_кредит_после - %d,кредит по счету %f,"
+               " Превышение кредита %s\n",counter+1, clients[counter], max_credit[counter], max_credit[counter]/2,
+               money[counter], answer);
+
+    }
+    printf("список клиентов с превышением:\n");
+    for (i=0 ; i < n; i++){
+        printf("%d\n", arr[i]);
+    }
+    free(arr);
+    return 0;
+}
+
 /*main - основная функция программы*/
 int main()
 {
@@ -1042,16 +1145,23 @@ int main()
     int multi_result;
 
     SetConsoleOutputCP(CP_UTF8);//   compound12();
+    client_division();
+    for_stars();
+  //  compound12();
+ //   for_forteen();
+//    for_twelf();
+    add_for_eleven();
+//    ten_for();
 //    ex_for_six();
-    add_for_ten();
-    do_check();
+//    add_for_ten();
+//    do_check();
 //    input_test1();
 //    oneToHundred();
 //    depositProfit();
 //    e_in_range(2.0);
-//      e_const();
-//      math1();
-//      encript_code(1);
+//    e_const();
+//    math1();
+//    encript_code(1);
 //    triangle1();
 //    insert_circle();
 //    unless_while();
